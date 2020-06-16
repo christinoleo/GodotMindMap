@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Links.gd" type="Script" id=1]
+
+[node name="links" type="VBoxContainer"]
+margin_right = 268.0
+margin_bottom = 29.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="separator1" type="Control" parent="."]
+visible = false
+margin_right = 268.0
+margin_bottom = 4.0
+rect_min_size = Vector2( 0, 4 )
+
+[node name="container" type="HBoxContainer" parent="."]
+margin_right = 268.0
+margin_bottom = 29.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="separator2" type="Control" parent="."]
+visible = false
+margin_top = 25.0
+margin_right = 268.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 0, 4 )
