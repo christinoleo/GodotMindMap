@@ -16,7 +16,13 @@ func get_links():
 	return ret
 	
 	
-func remove_link(text):
-	for c in $container.get_children():
-		if c.text == text:
-			$container.remove_child(c)
+func update_link(idx:int, text:String, url:String):
+	if $container.get_child_count() > idx:
+		var child = $container.get_child(idx)
+		child.text = text
+		child.url = url
+	
+	
+func remove_link(idx:int):
+	if $container.get_child_count() > idx:
+		$container.remove_child($container.get_child(idx))

@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UrlManager.gd" type="Script" id=1]
+
+[node name="UrlManager" type="HBoxContainer"]
+anchor_right = 1.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1635.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="letext" type="LineEdit" parent="VBoxContainer"]
+margin_right = 1635.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "text"
+
+[node name="leurl" type="LineEdit" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 1635.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+placeholder_text = "url"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1639.0
+margin_right = 2048.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Add"
+[connection signal="text_changed" from="VBoxContainer/letext" to="." method="_on_letext_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/leurl" to="." method="_on_leurl_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

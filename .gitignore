@@ -13,3 +13,4 @@ data_*/
 .vscode/
 .idea/
 savegraph*
+bin/

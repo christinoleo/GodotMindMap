@@ -26,9 +26,7 @@ rect_scale = Vector2( 1, 1 )
 mouse_filter = 1
 offset = Vector2( 0, 300 )
 [connection signal="_end_node_move" from="." to="." method="_on_GraphEdit__end_node_move"]
-[connection signal="connection_from_empty" from="." to="." method="_on_GraphEdit_connection_from_empty"]
 [connection signal="connection_request" from="." to="." method="_on_GraphEdit_connection_request"]
-[connection signal="connection_to_empty" from="." to="." method="_on_GraphEdit_connection_to_empty"]
 [connection signal="copy_nodes_request" from="." to="." method="_on_GraphEdit_copy_nodes_request"]
 [connection signal="delete_nodes_request" from="." to="." method="_on_GraphEdit_delete_nodes_request"]
 [connection signal="disconnection_request" from="." to="." method="_on_GraphEdit_disconnection_request"]

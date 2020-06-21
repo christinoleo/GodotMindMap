@@ -81,12 +81,6 @@ func _on_TextEdit_focus_entered():
 	get_parent().set_selected(self)
 
 
-func _on_GraphNode_gui_input(event):
-	if event is InputEventMouseButton and event.doubleclick:
-		get_parent().change_title(self)
-		accept_event()
-		
-
 func add_link(text, uri):
 	if links_instance == null:
 		links_instance = links.instance()
@@ -99,9 +93,13 @@ func get_links():
 	return links_instance.get_links()
 	
 	
-func remove_link(text):
-	links_instance.remove_link(text)
+func remove_link(idx:int):
+	links_instance.remove_link(idx)
 	if links_instance.get_links().size() == 0:
 		remove_child(links_instance)
 		links_instance = null
 		_on_resize_request(get_size())
+	
+	
+func update_link(idx:int, text:String, url:String):
+	links_instance.update_link(idx, text, url)

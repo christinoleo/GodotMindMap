@@ -54,6 +54,5 @@ rect_min_size = Vector2( 0, 20 )
 size_flags_vertical = 3
 wrap_enabled = true
 [connection signal="close_request" from="." to="." method="_on_close_request"]
-[connection signal="gui_input" from="." to="." method="_on_GraphNode_gui_input"]
 [connection signal="resize_request" from="." to="." method="_on_resize_request"]
 [connection signal="focus_entered" from="TextEdit" to="." method="_on_TextEdit_focus_entered"]

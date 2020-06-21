@@ -1,6 +1,6 @@
 extends GraphEdit
 
-export(NodePath) var popup
+export(NodePath) var inspector
 export(NodePath) var savedialogue
 export(NodePath) var loaddialogue
 export(NodePath) var console
@@ -38,6 +38,10 @@ func _input(event):
 		accept_event()
 	if event.is_action_pressed("zoom_out") and zoom_active:
 		zoom -= 0.1
+		accept_event()
+		
+	if event.is_action_pressed("option_menu"):
+		new_node(get_viewport().get_mouse_position())
 		accept_event()
 	
 
@@ -96,28 +100,16 @@ func disconnect_connections_of_node(node_name):
 	for c in conn["right"]: disconnect_node(node_name, 0, c, 0)
 
 
-func change_title(node):
-	get_node(popup).activate(node)
+func new_node(position:Vector2, title:="Title"):
+	var new_node = graph_node.instance()
+	new_node.set_offset(position)
+	new_node.name = new_node.title
+	add_child(new_node)
 
+## CONNECTIONS ##
 
 func _on_GraphEdit_connection_request(from, from_slot, to, to_slot):
 	connect_node(from, from_slot, to, to_slot)
-
-
-func _on_GraphEdit_connection_to_empty(from, from_slot, release_position):
-	var new_node = graph_node.instance()
-	new_node.set_offset(release_position-Vector2(0, new_node.rect_size.y/2))
-	add_child(new_node)
-	new_node.name = String(randi())
-	connect_node(from, from_slot, new_node.name, 0)
-
-
-func _on_GraphEdit_connection_from_empty(to, to_slot, release_position):
-	var new_node = graph_node.instance()
-	new_node.set_offset(release_position-Vector2(new_node.rect_size.x, new_node.rect_size.y/2))
-	add_child(new_node)
-	new_node.name = String(randi())
-	connect_node(new_node.name, 0, to, to_slot)
 
 
 func _on_GraphEdit_disconnection_request(from, from_slot, to, to_slot):
@@ -158,10 +150,7 @@ func _on_GraphEdit_duplicate_nodes_request():
 
 
 func _on_newnode_pressed():
-	var new_node = graph_node.instance()
-	new_node.set_offset(get_viewport().get_mouse_position()-Vector2(new_node.rect_size.x, 0)/2)
-	new_node.name = new_node.title
-	add_child(new_node)
+	new_node(scroll_offset + get_viewport_rect().size/2)
 
 
 func _on_save_pressed():
@@ -182,3 +171,11 @@ func _on_LoadDialog_file_selected(path):
 
 func _on_load_pressed():
 	get_node(loaddialogue).popup_centered()
+
+
+func _on_GraphEdit_node_selected(node):
+	get_node(inspector).activate(node)
+
+
+func _on_GraphEdit_node_unselected(node):
+	get_node(inspector).hide()

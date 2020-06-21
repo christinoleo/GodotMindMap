@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
-[ext_resource path="res://PopupDialog.gd" type="Script" id=2]
+[ext_resource path="res://Inspector.gd" type="Script" id=2]
+[ext_resource path="res://UrlManager.tscn" type="PackedScene" id=3]
 
-[node name="PopupDialog" type="PopupDialog"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.592157, 0.592157, 0.592157, 1 )
+
+[node name="Inspector" type="PanelContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -14,6 +23,7 @@ margin_right = 237.0
 margin_bottom = 96.0
 size_flags_vertical = 3
 theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,35 +31,39 @@ __meta__ = {
 graph_edit = NodePath("../GraphEdit")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = -10.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 449.0
+margin_bottom = 255.0
 size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-margin_right = 433.0
-margin_bottom = 173.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 435.0
+margin_bottom = 241.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Save" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_right = 433.0
-margin_bottom = 29.0
-size_flags_horizontal = 3
-text = "Save"
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 425.0
+margin_bottom = 23.0
+text = "Inspector"
+align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 33.0
-margin_right = 433.0
-margin_bottom = 66.0
+margin_top = 27.0
+margin_right = 425.0
+margin_bottom = 60.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_top = 5.0
@@ -59,15 +73,17 @@ text = "Title: "
 
 [node name="TextEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 81.0
-margin_right = 433.0
+margin_right = 425.0
 margin_bottom = 33.0
 size_flags_horizontal = 3
 placeholder_text = "Title"
+caret_blink = true
+caret_blink_speed = 0.5
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 70.0
-margin_right = 433.0
-margin_bottom = 99.0
+margin_top = 64.0
+margin_right = 425.0
+margin_bottom = 93.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_top = 3.0
@@ -77,15 +93,15 @@ text = "Color frame:    "
 
 [node name="ColorFrame" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 180.0
-margin_right = 433.0
+margin_right = 425.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 color = Color( 0.333333, 0.113725, 0.113725, 1 )
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 103.0
-margin_right = 433.0
-margin_bottom = 132.0
+margin_top = 97.0
+margin_right = 425.0
+margin_bottom = 126.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 margin_top = 3.0
@@ -95,46 +111,31 @@ text = "Color selected: "
 
 [node name="ColorSelected" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 margin_left = 180.0
-margin_right = 433.0
+margin_right = 425.0
 margin_bottom = 29.0
 size_flags_horizontal = 3
 color = Color( 0.333333, 0.113725, 0.113725, 1 )
 
-[node name="newlinkcontainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 136.0
-margin_right = 433.0
-margin_bottom = 169.0
-size_flags_horizontal = 3
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 130.0
+margin_right = 425.0
+margin_bottom = 153.0
+text = "Buttons:"
 
-[node name="text" type="LineEdit" parent="MarginContainer/VBoxContainer/newlinkcontainer"]
-margin_right = 170.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-placeholder_text = "text"
-
-[node name="url" type="LineEdit" parent="MarginContainer/VBoxContainer/newlinkcontainer"]
-margin_left = 174.0
-margin_right = 344.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-placeholder_text = "url"
-
-[node name="AddLink" type="Button" parent="MarginContainer/VBoxContainer/newlinkcontainer"]
-margin_left = 348.0
-margin_right = 433.0
-margin_bottom = 33.0
-size_flags_horizontal = 3
-text = "Add"
+[node name="UrlManager" parent="MarginContainer/VBoxContainer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+margin_top = 157.0
+margin_right = 425.0
+margin_bottom = 227.0
 
 [node name="Links" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 173.0
-margin_right = 433.0
-margin_bottom = 173.0
+margin_top = 231.0
+margin_right = 425.0
+margin_bottom = 231.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_constants/separation = 5
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/HBoxContainer/TextEdit" to="." method="_on_TextEdit_text_changed"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer2/ColorFrame" to="." method="_on_ColorFrame_color_changed"]
 [connection signal="color_changed" from="MarginContainer/VBoxContainer/HBoxContainer3/ColorSelected" to="." method="_on_ColorSelected_color_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/newlinkcontainer/AddLink" to="." method="_on_AddLink_pressed"]
+[connection signal="on_pressed" from="MarginContainer/VBoxContainer/UrlManager" to="." method="_on_AddLink_pressed"]
