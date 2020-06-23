@@ -4,7 +4,7 @@ export(NodePath) var inspector
 export(NodePath) var savedialogue
 export(NodePath) var loaddialogue
 export(NodePath) var console
-onready var graph_node = preload("res://GraphNode.tscn")
+onready var graph_node = preload("res://graph/GraphNode.tscn")
 
 var zoom_active := false
 

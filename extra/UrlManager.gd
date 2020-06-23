@@ -11,7 +11,7 @@ signal on_url(url)
 signal on_pressed(text, url)
 
 enum Type {
-	TYPE_ADD
+	TYPE_ADD,
 	TYPE_REMOVE
 }
 

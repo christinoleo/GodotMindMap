@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-onready var link_button := preload("res://Link.tscn")
+onready var link_button := preload("./Link.tscn")
 
 func add_link(text, url):
 	var b = link_button.instance()

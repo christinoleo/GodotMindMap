@@ -2,7 +2,7 @@ extends PanelContainer
 
 export(NodePath) var graph_edit
 
-onready var url_manager := preload("res://UrlManager.tscn")
+onready var url_manager := preload("res://extra/UrlManager.tscn")
 
 onready var container := $MarginContainer
 onready var title := $MarginContainer/VBoxContainer/HBoxContainer/TextEdit

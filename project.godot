@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "BibtexParser",
+"language": "GDScript",
+"path": "res://bibtex/bibtex_parser.gd"
+}, {
 "base": "HBoxContainer",
 "class": "UrlManager",
 "language": "GDScript",
-"path": "res://UrlManager.gd"
+"path": "res://extra/UrlManager.gd"
 } ]
 _global_script_class_icons={
+"BibtexParser": "",
 "UrlManager": ""
 }
 

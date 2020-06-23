@@ -1,9 +1,9 @@
 extends GraphNode
 
 
-onready var link_button = preload("res://Link.tscn")
+onready var link_button = preload("res://extra/Link.tscn")
+onready var links = preload("res://extra/Links.tscn")
 onready var text_edit = $TextEdit
-onready var links = preload("res://Links.tscn")
 var links_instance
 
 var text_edit_resize := 35
